@@ -11,7 +11,4 @@ levels that can be solved in any programming language you like.
 ## Requirements  
 - [Kotlin 1.4.10+](https://kotlinlang.org/) 
 - [JDK 11+](https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/) 
-- [Maven 3.6+](https://maven.apache.org/) 
-
-## License  
-MIT License
+- [Maven 3.6.3+](https://maven.apache.org/)
