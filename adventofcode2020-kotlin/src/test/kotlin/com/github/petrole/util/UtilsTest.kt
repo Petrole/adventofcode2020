@@ -22,12 +22,23 @@
  * SOFTWARE.
  */
 
-package com.github.petrole
+package com.github.petrole.util
 
-interface AdventPuzzle {
-    fun loadPuzzleInput(fileName: String): List<String>
+import org.assertj.core.api.Assertions
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
 
-    fun solvePartOne(inputTextLines: List<String>): String
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+class UtilsTest {
 
-    fun solvePartTwo(inputTextLines: List<String>): String
+    @Test
+    fun getTextFromFileTest(){
+        // Arrange
+        val testFileName = "test_file.txt"
+        // Act
+        val result = testFileName.getTextFromFile()
+        // Assert
+        val expectedResult = "YOLO\r\n" + "420\r\n"  // from 898 * 1122
+        Assertions.assertThat(result).isEqualTo(expectedResult)
+    }
 }

@@ -27,7 +27,7 @@ package com.github.petrole
 import com.github.petrole.util.getTextFromFile
 
 /**
- * Problem description @ https://adventofcode.com/2020/day/2
+ * Problem description @ [https://adventofcode.com/2020/day/2](https://adventofcode.com/2020/day/2)
  */
 class Day2 : AdventPuzzle {
 

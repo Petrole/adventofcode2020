@@ -24,10 +24,19 @@
 
 package com.github.petrole
 
-interface AdventPuzzle {
-    fun loadPuzzleInput(fileName: String): List<String>
+/**
+ * Problem description @ [https://adventofcode.com/2020/day/3](https://adventofcode.com/2020/day/3)
+ */
+class Day3 : AdventPuzzle {
+    override fun loadPuzzleInput(fileName: String): List<String> {
+        return listOf()
+    }
 
-    fun solvePartOne(inputTextLines: List<String>): String
+    override fun solvePartOne(inputTextLines: List<String>): String {
+        return ""
+    }
 
-    fun solvePartTwo(inputTextLines: List<String>): String
+    override fun solvePartTwo(inputTextLines: List<String>): String {
+        return ""
+    }
 }

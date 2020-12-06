@@ -24,10 +24,18 @@
 
 package com.github.petrole
 
-interface AdventPuzzle {
-    fun loadPuzzleInput(fileName: String): List<String>
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
 
-    fun solvePartOne(inputTextLines: List<String>): String
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+interface AdventPuzzleTest {
+    @BeforeAll
+    fun setUp()
 
-    fun solvePartTwo(inputTextLines: List<String>): String
+    @Test
+    fun partOneTest()
+
+    @Test
+    fun partTwoTest()
 }

@@ -27,19 +27,18 @@ package com.github.petrole
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class Day2Test {
+class Day2Test : AdventPuzzleTest {
+
     lateinit var adventDay2: Day2
 
     @BeforeAll
-    fun setUp() {
+    override fun setUp() {
         adventDay2 = Day2()
     }
 
     @Test
-    fun partOneTest() {
+    override fun partOneTest() {
         // Arrange
         val testInputTextLines = listOf(
             "3-4 j: jjjjjjjnq",
@@ -56,7 +55,7 @@ class Day2Test {
     }
 
     @Test
-    fun partTwoTest() {
+    override fun partTwoTest() {
         // Arrange
         val testInputTextLines = listOf(
             "3-4 j: jjjjjjjnq",

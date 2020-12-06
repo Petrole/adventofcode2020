@@ -24,10 +24,41 @@
 
 package com.github.petrole
 
-interface AdventPuzzle {
-    fun loadPuzzleInput(fileName: String): List<String>
+import org.assertj.core.api.Assertions
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Test
 
-    fun solvePartOne(inputTextLines: List<String>): String
+class Day3Test : AdventPuzzleTest {
 
-    fun solvePartTwo(inputTextLines: List<String>): String
+    lateinit var adventDay3: Day3
+
+    @BeforeAll
+    override fun setUp() {
+        // Arrange
+
+        // Act
+
+        // Assert
+        assert(true)
+    }
+
+    @Test
+    override fun partOneTest() {
+        // Arrange
+
+        // Act
+
+        // Assert
+        assert(true)
+    }
+
+    @Test
+    override fun partTwoTest() {
+        // Arrange
+
+        // Act
+
+        // Assert
+        assert(true)
+    }
 }
