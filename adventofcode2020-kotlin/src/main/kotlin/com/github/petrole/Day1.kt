@@ -24,5 +24,46 @@
 
 package com.github.petrole
 
-class Day1 {
+import com.github.petrole.util.getTextFromFile
+
+class Day1 : AdventPuzzle {
+
+    override fun loadPuzzleInput(fileName: String): List<String> {
+        return fileName
+            .getTextFromFile()
+            .split("\n")
+            .takeWhile { it.isNotBlank() }
+    }
+
+    override fun solvePartOne(inputTextLines: List<String>): String {
+        val expenseReport: List<Int> = inputTextLines.map { it.toInt() }
+        val targetSum = 2020
+        for (i in expenseReport.indices) {
+            for (j in (i + 1)..expenseReport.lastIndex) {
+                if (expenseReport[i] + expenseReport[j] == targetSum) {
+                    return (expenseReport[i] * expenseReport[j]).toString()
+                }
+            }
+        }
+        return "No solution found."
+    }
+
+    override fun solvePartTwo(inputTextLines: List<String>): String {
+        val expenseReport: List<Int> = inputTextLines.map { it.toInt() }
+        val targetSum = 2020
+        // we have nice computers now,
+        // maybe not so in poorer places,
+        // but i dont care and im lazy,
+        // still, if we compute a+b+c and then a+b+d , a+b+e, ...,  we should cache the result of a+b and so on
+        for (i in expenseReport.indices) {
+            for (j in (i + 1)..expenseReport.lastIndex) {
+                for (k in (j + 1)..expenseReport.lastIndex) {
+                    if (expenseReport[i] + expenseReport[j] + expenseReport[k] == targetSum) {
+                        return (expenseReport[i] * expenseReport[j] * expenseReport[k]).toString()
+                    }
+                }
+            }
+        }
+        return "No solution found."
+    }
 }
