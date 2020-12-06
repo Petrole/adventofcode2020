@@ -26,6 +26,10 @@ package com.github.petrole
 
 import com.github.petrole.util.getTextFromFile
 
+
+/**
+ * Problem description @ https://adventofcode.com/2020/day/1
+ */
 class Day1 : AdventPuzzle {
 
     override fun loadPuzzleInput(fileName: String): List<String> {

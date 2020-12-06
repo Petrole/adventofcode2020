@@ -31,32 +31,44 @@ import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class Day2Test {
-    lateinit var adventDay2 : Day2
+    lateinit var adventDay2: Day2
 
     @BeforeAll
-    fun setUp(){
+    fun setUp() {
         adventDay2 = Day2()
     }
 
     @Test
-    fun partOneTest(){
+    fun partOneTest() {
         // Arrange
-        val testInputTextLines = listOf("")
+        val testInputTextLines = listOf(
+            "3-4 j: jjjjjjjnq",
+            "5-6 h: pkhzhh",
+            "5-6 g: gggggm",
+            "1-6 j: djjjjjj",
+            "4-5 c: xvfcfkfz"
+        )
         // Act
         val result = adventDay2.solvePartOne(testInputTextLines)
         // Assert
-        val expectedResult = "No solution found."
+        val expectedResult = "2" // the 1st rule
         Assertions.assertThat(result).isEqualTo(expectedResult)
     }
 
     @Test
-    fun partTwoTest(){
+    fun partTwoTest() {
         // Arrange
-        val testInputTextLines = listOf("")
+        val testInputTextLines = listOf(
+            "3-4 j: jjjjjjjnq",
+            "5-6 h: pkhzhh",
+            "5-6 g: gggggm",
+            "1-6 j: djjjjjj",
+            "4-5 c: xvfcfkfz"
+        )
         // Act
         val result = adventDay2.solvePartTwo(testInputTextLines)
         // Assert
-        val expectedResult = "No solution found."
+        val expectedResult = "3" // the 2nd rule
         Assertions.assertThat(result).isEqualTo(expectedResult)
     }
 }

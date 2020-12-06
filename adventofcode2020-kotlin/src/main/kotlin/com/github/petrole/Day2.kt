@@ -26,8 +26,12 @@ package com.github.petrole
 
 import com.github.petrole.util.getTextFromFile
 
-
+/**
+ * Problem description @ https://adventofcode.com/2020/day/2
+ */
 class Day2 : AdventPuzzle {
+
+    private val regexPattern = "(\\d*)-(\\d*) ([a-zA-Z]): ([a-zA-Z]*)".toRegex()
 
     override fun loadPuzzleInput(fileName: String): List<String> {
         return fileName
@@ -37,12 +41,40 @@ class Day2 : AdventPuzzle {
     }
 
     override fun solvePartOne(inputTextLines: List<String>): String {
-
-        return "No solution found."
+        var numberOfValidPasswords = 0
+        for (line in inputTextLines) {
+            val lineGroups = regexPattern.find(line)?.destructured
+            if (lineGroups != null) {
+                val minPolicy = lineGroups.component1().toInt()
+                val maxPolicy = lineGroups.component2().toInt()
+                val letterPolicy = lineGroups.component3().single()
+                val password = lineGroups.component4()
+                if (password.filter { it == letterPolicy }.count() in minPolicy..maxPolicy)
+                    numberOfValidPasswords += 1
+            }
+        }
+        return numberOfValidPasswords.toString()
     }
 
     override fun solvePartTwo(inputTextLines: List<String>): String {
-        return "No solution found."
+        var numberOfValidPasswords = 0
+        for (line in inputTextLines) {
+            val lineGroups = regexPattern.find(line)?.destructured
+            if (lineGroups != null) {
+                val minPolicy = lineGroups.component1().toInt()
+                val maxPolicy = lineGroups.component2().toInt()
+                val letterPolicy = lineGroups.component3().single()
+                val password = lineGroups.component4()
+                if (password.filter { it == letterPolicy }.count() > 0
+                    && ((password[minPolicy - 1] == letterPolicy)
+                        .xor(password[maxPolicy - 1] == letterPolicy))
+                ) {
+                    numberOfValidPasswords += 1
+
+                }
+            }
+        }
+        return numberOfValidPasswords.toString()
     }
 }
 

@@ -25,11 +25,11 @@
 package com.github.petrole
 
 fun main() {
-    val adventDay1 = Day1()
-    val inputFileNameDay1 = "input_day1_report_repair.txt"
-    val inputTextDay1 = adventDay1.loadPuzzleInput(inputFileNameDay1)
-    val resultPart1 = adventDay1.solvePartOne(inputTextDay1)
-    val resultPart2 = adventDay1.solvePartTwo(inputTextDay1)
+    val adventDay2 = Day2()
+    val inputFileNameDay2 = "input_day2_list_of_passwords.txt"
+    val inputTextDay2 = adventDay2.loadPuzzleInput(inputFileNameDay2)
+    val resultPart1 = adventDay2.solvePartOne(inputTextDay2)
     println("Part 1 result : $resultPart1")
+    val resultPart2 = adventDay2.solvePartTwo(inputTextDay2)
     println("Part 2 result : $resultPart2")
 }
