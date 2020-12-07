@@ -24,7 +24,6 @@
 
 package com.github.petrole
 
-
 /**
  * Problem description @ [https://adventofcode.com/2020/day/3](https://adventofcode.com/2020/day/3)
  */
@@ -35,6 +34,6 @@ class Day3(var inputLines: List<String>) : AdventPuzzle {
     }
 
     override fun solvePartTwo(): String {
-        return ""
+        return "Not implemented yet."
     }
 }

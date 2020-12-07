@@ -24,7 +24,6 @@
 
 package com.github.petrole
 
-
 /**
  * Problem description @ [https://adventofcode.com/2020/day/2](https://adventofcode.com/2020/day/2)
  *
@@ -34,24 +33,25 @@ class Day2(var inputLines: List<String>) : AdventPuzzle {
 
     private val regexPattern = "(\\d*)-(\\d*) ([a-zA-Z]): ([a-zA-Z]*)".toRegex()
 
-    private data class KanyeWest(val minPolicy: Int, val maxPolicy: Int, val letterPolicy: Char, val password: String)
+    // Denotes the password policy.
+    private data class KanyeWest(val min: Int, val max: Int, val letter: Char, val password: String)
 
     private val kanyes by lazy {
         inputLines.map {
-            val (minPolicy, maxPolicy, letterPolicy, password) = regexPattern.find(it)?.destructured!!
-            KanyeWest(minPolicy.toInt(), maxPolicy.toInt(), letterPolicy.single(), password)
+            val (min, max, letter, password) = regexPattern.find(it)?.destructured!!
+            KanyeWest(min.toInt(), max.toInt(), letter.single(), password)
         }
     }
 
     override fun solvePartOne(): String {
-        return kanyes.count { (minPolicy, maxPolicy, letterPolicy, password) ->
-            (password.count { it == letterPolicy } in minPolicy..maxPolicy)
+        return kanyes.count { (min, max, letter, password) ->
+            (password.count { it == letter } in min..max)
         }.toString()
     }
 
     override fun solvePartTwo(): String {
-        return kanyes.count { (minPolicy, maxPolicy, letterPolicy, password) ->
-            (password[minPolicy - 1] == letterPolicy) != (password[maxPolicy - 1] == letterPolicy)
+        return kanyes.count { (min, max, letter, password) ->
+            (password[min - 1] == letter) != (password[max - 1] == letter)
         }.toString()
     }
 }

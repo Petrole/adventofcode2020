@@ -24,13 +24,12 @@
 
 package com.github.petrole
 
-import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 
 class Day3Test : AdventPuzzleTest {
 
-    lateinit var adventDay3: Day3
+    private lateinit var adventDay3: Day3
 
     @BeforeAll
     override fun setUp() {

@@ -22,35 +22,72 @@
  * SOFTWARE.
  */
 
+@file:Suppress("unused")
+
 package com.github.petrole
 
 import com.github.petrole.util.LoadInputAsLines
 import org.reflections.Reflections
 
-
 /**
  * Empty String while waiting for lib fix.
  * See @ [https://github.com/ronmamo/reflections/issues/273](https://github.com/ronmamo/reflections/issues/273)
  */
-val reflections = Reflections("")
+private val reflections = Reflections("")
 
-private fun findAllAdventPuzzleImplInterfaces(): MutableSet<Class<out AdventPuzzle>>? {
+private fun findAllAdventPuzzleImplInterfaces(): MutableSet<Class<out AdventPuzzle>> {
     return reflections.getSubTypesOf(AdventPuzzle::class.java)
+        ?: throw NullPointerException("Couldn't find day classes - please check directory .")
 }
 
-fun solveAllDays(){
-    val allDayClasses = findAllAdventPuzzleImplInterfaces()
-        ?: throw NullPointerException("Couldn't find day classes - please check directory .")
-    allDayClasses.forEach { println(it.simpleName) }
+fun inputDay(day: Int): String {
+    return "input_day_${day}.txt"
+}
+
+fun Class<out AdventPuzzle>.getNewInstanceOf(day: Int): AdventPuzzle {
+    return this.constructors[0].newInstance(LoadInputAsLines[inputDay(day)]) as AdventPuzzle
+}
+
+fun findSpecificDay(day: Int): AdventPuzzle {
+    return findAllAdventPuzzleImplInterfaces()
+        .first { it.simpleName.contains(day.toString()) }
+        .getNewInstanceOf(day)
+}
+
+fun solveAllDays() {
+    findAllAdventPuzzleImplInterfaces()
+        .forEachIndexed { dayIndex, clazz ->
+            clazz.getNewInstanceOf(dayIndex + 1)
+                .run {
+                    println(clazz.simpleName)
+                    solvePartOneTimed()
+                    solvePartTwoTimed()
+                }
+        }
+}
+
+fun solveDay(day: Int) {
+    findSpecificDay(day).run {
+        println(this::class.simpleName)
+        solvePartOneTimed()
+        solvePartTwoTimed()
+    }
+}
+
+fun solveDayPart1(day: Int) {
+    findSpecificDay(day).run {
+        println(this::class.simpleName)
+        solvePartOneTimed()
+    }
+}
+
+fun solveDayPart2(day: Int) {
+    findSpecificDay(day).run {
+        println(this::class.simpleName)
+        solvePartTwoTimed()
+    }
 }
 
 fun main() {
-    solveAllDays()
-    val adventDay3 = Day3(LoadInputAsLines["input_day_3.txt"])
-
-    val resultPart1 = adventDay3.solvePartOne()
-    println("Part 1 result : $resultPart1")
-
-    val resultPart2 = adventDay3.solvePartTwo()
-    println("Part 2 result : $resultPart2")
+    solveDayPart1(3)
 }

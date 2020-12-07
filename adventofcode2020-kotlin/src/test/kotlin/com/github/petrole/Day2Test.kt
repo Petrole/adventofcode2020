@@ -24,13 +24,13 @@
 
 package com.github.petrole
 
-import org.assertj.core.api.Assertions
+import com.google.common.truth.Truth.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class Day2Test : AdventPuzzleTest {
 
-    lateinit var adventDay2: Day2
+    private lateinit var adventDay2: Day2
 
     @BeforeEach
     override fun setUp() {
@@ -50,7 +50,7 @@ class Day2Test : AdventPuzzleTest {
         val result = adventDay2.solvePartOne()
 
         val expectedResult = "2" // the 1st rule
-        Assertions.assertThat(result).isEqualTo(expectedResult)
+        assertThat(result).isEqualTo(expectedResult)
     }
 
     @Test
@@ -67,6 +67,6 @@ class Day2Test : AdventPuzzleTest {
         val result = adventDay2.solvePartTwo()
         // Assert
         val expectedResult = "3" // the 2nd rule
-        Assertions.assertThat(result).isEqualTo(expectedResult)
+        assertThat(result).isEqualTo(expectedResult)
     }
 }

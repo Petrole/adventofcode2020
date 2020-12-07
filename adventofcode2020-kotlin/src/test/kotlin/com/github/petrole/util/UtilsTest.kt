@@ -24,7 +24,7 @@
 
 package com.github.petrole.util
 
-import org.assertj.core.api.Assertions
+import com.google.common.truth.Truth.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
@@ -39,7 +39,7 @@ class UtilsTest {
         val result = LoadInputAsText[testFileName]
         // Assert
         val expectedResult = "YOLO\r\n" + "420\r\n"
-        Assertions.assertThat(result).isEqualTo(expectedResult)
+        assertThat(result).isEqualTo(expectedResult)
     }
 
     @Test
@@ -50,6 +50,6 @@ class UtilsTest {
         val result = LoadInputAsLines[testFileName]
         // Assert
         val expectedResult = listOf("YOLO","420")
-        Assertions.assertThat(result).isEqualTo(expectedResult)
+        assertThat(result).isEqualTo(expectedResult)
     }
 }

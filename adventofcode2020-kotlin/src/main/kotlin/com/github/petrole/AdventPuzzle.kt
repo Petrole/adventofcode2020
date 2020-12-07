@@ -24,8 +24,18 @@
 
 package com.github.petrole
 
+import kotlin.time.measureTimedValue
+
 interface AdventPuzzle {
     fun solvePartOne(): String
 
     fun solvePartTwo(): String
+}
+
+fun AdventPuzzle.solvePartOneTimed() {
+    println("Part 1 result : ${measureTimedValue { this.solvePartOne() }}")
+}
+
+fun AdventPuzzle.solvePartTwoTimed() {
+    println("Part 2 result : ${measureTimedValue { this.solvePartTwo() }}\n")
 }

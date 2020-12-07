@@ -24,7 +24,6 @@
 
 package com.github.petrole
 
-
 /**
  * Problem description @ [https://adventofcode.com/2020/day/1](https://adventofcode.com/2020/day/1)
  */
