@@ -26,10 +26,6 @@ package com.github.petrole
 
 import com.github.petrole.util.LoadInputAsLines
 import org.reflections.Reflections
-import java.io.IOException
-import java.lang.invoke.MethodHandles
-import kotlin.time.ExperimentalTime
-import kotlin.time.measureTimedValue
 
 
 /**
@@ -45,7 +41,6 @@ private fun findAllAdventPuzzleImplInterfaces(): MutableSet<Class<out AdventPuzz
 fun solveAllDays(){
     val allDayClasses = findAllAdventPuzzleImplInterfaces()
         ?: throw NullPointerException("Couldn't find day classes - please check directory .")
-
     allDayClasses.forEach { println(it.simpleName) }
 }
 

@@ -25,14 +25,14 @@
 package com.github.petrole
 
 import org.assertj.core.api.Assertions
-import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class Day2Test : AdventPuzzleTest {
 
     lateinit var adventDay2: Day2
 
-    @BeforeAll
+    @BeforeEach
     override fun setUp() {
         adventDay2 = Day2(listOf())
     }

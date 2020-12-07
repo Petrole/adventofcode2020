@@ -33,15 +33,14 @@ class Day1(var inputLines: List<String>) : AdventPuzzle {
     private val targetSum = 2020
 
     override fun solvePartOne(): String {
-        val expenseReport: List<Int> = inputLines.map { it.toInt() }
-        for (i in expenseReport.indices) {
-            for (j in (i + 1)..expenseReport.lastIndex) {
-                if (expenseReport[i] + expenseReport[j] == targetSum) {
-                    return (expenseReport[i] * expenseReport[j]).toString()
-                }
-            }
+        val expenseReport = inputLines.map { it.toInt() }.toSet()
+        return try {
+            val a = expenseReport.first {  2020 - it in expenseReport}
+            (a*(2020-a)).toString()
+        } catch (e:Exception){
+            System.err.println("Exception : ${e.message}")
+            "No solution found."
         }
-        return "No solution found."
     }
 
     override fun solvePartTwo(): String {

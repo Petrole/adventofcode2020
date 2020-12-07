@@ -27,46 +27,32 @@ package com.github.petrole
 
 /**
  * Problem description @ [https://adventofcode.com/2020/day/2](https://adventofcode.com/2020/day/2)
+ *
+ * I dedicate this puzzle to Kanye West.
  */
 class Day2(var inputLines: List<String>) : AdventPuzzle {
 
     private val regexPattern = "(\\d*)-(\\d*) ([a-zA-Z]): ([a-zA-Z]*)".toRegex()
 
-    override fun solvePartOne(): String {
-        var numberOfValidPasswords = 0
-        for (line in inputLines) {
-            val lineGroups = regexPattern.find(line)?.destructured
-            if (lineGroups != null) {
-                val minPolicy = lineGroups.component1().toInt()
-                val maxPolicy = lineGroups.component2().toInt()
-                val letterPolicy = lineGroups.component3().single()
-                val password = lineGroups.component4()
-                if (password.filter { it == letterPolicy }.count() in minPolicy..maxPolicy)
-                    numberOfValidPasswords += 1
-            }
+    private data class KanyeWest(val minPolicy: Int, val maxPolicy: Int, val letterPolicy: Char, val password: String)
+
+    private val kanyes by lazy {
+        inputLines.map {
+            val (minPolicy, maxPolicy, letterPolicy, password) = regexPattern.find(it)?.destructured!!
+            KanyeWest(minPolicy.toInt(), maxPolicy.toInt(), letterPolicy.single(), password)
         }
-        return numberOfValidPasswords.toString()
+    }
+
+    override fun solvePartOne(): String {
+        return kanyes.count { (minPolicy, maxPolicy, letterPolicy, password) ->
+            (password.count { it == letterPolicy } in minPolicy..maxPolicy)
+        }.toString()
     }
 
     override fun solvePartTwo(): String {
-        var numberOfValidPasswords = 0
-        for (line in inputLines) {
-            val lineGroups = regexPattern.find(line)?.destructured
-            if (lineGroups != null) {
-                val minPolicy = lineGroups.component1().toInt()
-                val maxPolicy = lineGroups.component2().toInt()
-                val letterPolicy = lineGroups.component3().single()
-                val password = lineGroups.component4()
-                if (password.filter { it == letterPolicy }.count() > 0
-                    && ((password[minPolicy - 1] == letterPolicy)
-                        .xor(password[maxPolicy - 1] == letterPolicy))
-                ) {
-                    numberOfValidPasswords += 1
-
-                }
-            }
-        }
-        return numberOfValidPasswords.toString()
+        return kanyes.count { (minPolicy, maxPolicy, letterPolicy, password) ->
+            (password[minPolicy - 1] == letterPolicy) != (password[maxPolicy - 1] == letterPolicy)
+        }.toString()
     }
 }
 
