@@ -33,9 +33,9 @@ class Day1(var inputLines: List<String>) : AdventPuzzle {
     private val targetSum = 2020
 
     override fun solvePartOne(): String {
-        val expenseReport = inputLines.map { it.toInt() }.toSet()
+        val report = inputLines.map { it.toInt() }.toSet()
         return try {
-            val a = expenseReport.first {  2020 - it in expenseReport}
+            val a = report.first {  2020 - it in report}
             (a*(2020-a)).toString()
         } catch (e:Exception){
             System.err.println("Exception : ${e.message}")
@@ -43,14 +43,19 @@ class Day1(var inputLines: List<String>) : AdventPuzzle {
         }
     }
 
+    /** See 3SUM @ [https://en.wikipedia.org/wiki/3SUM](https://en.wikipedia.org/wiki/3SUM) */
     override fun solvePartTwo(): String {
-        val expenseReport: List<Int> = inputLines.map { it.toInt() }
-        for (i in expenseReport.indices) {
-            for (j in (i + 1)..expenseReport.lastIndex) {
-                for (k in (j + 1)..expenseReport.lastIndex) {
-                    if (expenseReport[i] + expenseReport[j] + expenseReport[k] == targetSum) {
-                        return (expenseReport[i] * expenseReport[j] * expenseReport[k]).toString()
-                    }
+        val report= inputLines.map { it.toInt() }.sorted().toIntArray()
+        val n = report.size
+        report.forEachIndexed { index, _ ->
+            var start = index + 1
+            var end = n - 1
+            while (start < end) {
+                val sum = report[start] + report[end] + report[index]
+                when {
+                    sum == targetSum -> { return (report[start] * report[end] * report[index]).toString() }
+                    sum > targetSum -> { end-- }
+                    else -> { start++ }
                 }
             }
         }
