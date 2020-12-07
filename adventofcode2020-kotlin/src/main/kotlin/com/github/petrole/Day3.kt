@@ -24,19 +24,17 @@
 
 package com.github.petrole
 
+
 /**
  * Problem description @ [https://adventofcode.com/2020/day/3](https://adventofcode.com/2020/day/3)
  */
-class Day3 : AdventPuzzle {
-    override fun loadPuzzleInput(fileName: String): List<String> {
-        return listOf()
-    }
+class Day3(var inputLines: List<String>) : AdventPuzzle {
 
-    override fun solvePartOne(inputTextLines: List<String>): String {
+    override fun solvePartOne(): String {
         return ""
     }
 
-    override fun solvePartTwo(inputTextLines: List<String>): String {
+    override fun solvePartTwo(): String {
         return ""
     }
 }

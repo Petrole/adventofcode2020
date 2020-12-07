@@ -24,12 +24,38 @@
 
 package com.github.petrole
 
+import com.github.petrole.util.LoadInputAsLines
+import org.reflections.Reflections
+import java.io.IOException
+import java.lang.invoke.MethodHandles
+import kotlin.time.ExperimentalTime
+import kotlin.time.measureTimedValue
+
+
+/**
+ * Empty String while waiting for lib fix.
+ * See @ [https://github.com/ronmamo/reflections/issues/273](https://github.com/ronmamo/reflections/issues/273)
+ */
+val reflections = Reflections("")
+
+private fun findAllAdventPuzzleImplInterfaces(): MutableSet<Class<out AdventPuzzle>>? {
+    return reflections.getSubTypesOf(AdventPuzzle::class.java)
+}
+
+fun solveAllDays(){
+    val allDayClasses = findAllAdventPuzzleImplInterfaces()
+        ?: throw NullPointerException("Couldn't find day classes - please check directory .")
+
+    allDayClasses.forEach { println(it.simpleName) }
+}
+
 fun main() {
-    val adventDay3 = Day3()
-    val inputFileNameDay2 = "input_day3_toboggan_trajectory.txt"
-    val inputTextDay3 = adventDay3.loadPuzzleInput(inputFileNameDay2)
-    val resultPart1 = adventDay3.solvePartOne(inputTextDay3)
+    solveAllDays()
+    val adventDay3 = Day3(LoadInputAsLines["input_day_3.txt"])
+
+    val resultPart1 = adventDay3.solvePartOne()
     println("Part 1 result : $resultPart1")
-    val resultPart2 = adventDay3.solvePartTwo(inputTextDay3)
+
+    val resultPart2 = adventDay3.solvePartTwo()
     println("Part 2 result : $resultPart2")
 }

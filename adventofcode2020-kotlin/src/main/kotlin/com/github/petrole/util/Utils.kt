@@ -24,21 +24,30 @@
 
 package com.github.petrole.util
 
-import java.io.File
 import java.io.IOException
 import java.lang.invoke.MethodHandles
-import java.nio.charset.StandardCharsets
 
 /**
- * Various utility methods used for the advent of code puzzles.
+ * Various utility singletons and methods used for the advent of code puzzles.
  */
+object LoadInputAsLines {
+    /**
+     * Retrieves all lines of a file of the given name as a list. Use UTF-8.
+     */
+    operator fun get(name: String): List<String> {
+        val resource = MethodHandles.lookup().lookupClass().classLoader.getResourceAsStream(name)
+            ?: throw IOException("Cannot find file : please check the path, file status or classpath settings.")
+        return resource.bufferedReader(Charsets.UTF_8).readLines()
+    }
+}
 
-
-/**
- * Retrieves text given a string representing the resource to load an read.
- */
-fun String.getTextFromFile(): String {
-    val resource = MethodHandles.lookup().lookupClass().classLoader.getResource(this)
-        ?: throw IOException("Cannot find file : please check and verify the path, file status or classpath settings.")
-    return File(resource.toURI()).readText(StandardCharsets.UTF_8)
+object LoadInputAsText {
+    /**
+     * Retrieves all the content of a file as a string. Use UTF-8.
+     */
+    operator fun get(name: String): String {
+        val resource = MethodHandles.lookup().lookupClass().classLoader.getResourceAsStream(name)
+            ?: throw IOException("Cannot find file : please check the path, file status or classpath settings.")
+        return resource.bufferedReader(Charsets.UTF_8).use { it.readText() }
+    }
 }

@@ -34,31 +34,17 @@ class Day3Test : AdventPuzzleTest {
 
     @BeforeAll
     override fun setUp() {
-        // Arrange
-
-        // Act
-
-        // Assert
         assert(true)
     }
 
     @Test
     override fun partOneTest() {
-        // Arrange
 
-        // Act
-
-        // Assert
         assert(true)
     }
 
     @Test
     override fun partTwoTest() {
-        // Arrange
-
-        // Act
-
-        // Assert
         assert(true)
     }
 }

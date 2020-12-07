@@ -25,9 +25,7 @@
 package com.github.petrole
 
 interface AdventPuzzle {
-    fun loadPuzzleInput(fileName: String): List<String>
+    fun solvePartOne(): String
 
-    fun solvePartOne(inputTextLines: List<String>): String
-
-    fun solvePartTwo(inputTextLines: List<String>): String
+    fun solvePartTwo(): String
 }

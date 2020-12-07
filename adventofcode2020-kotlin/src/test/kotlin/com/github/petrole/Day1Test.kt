@@ -34,27 +34,25 @@ class Day1Test : AdventPuzzleTest {
 
     @BeforeAll
     override fun setUp() {
-        adventDay1 = Day1()
+        adventDay1 = Day1(listOf())
     }
 
     @Test
     override fun partOneTest() {
-        // Arrange
-        val testInputTextLines = listOf("1009", "1216", "898", "1333", "1010", "789", "1122", "577")
-        // Act
-        val result = adventDay1.solvePartOne(testInputTextLines)
-        // Assert
+        adventDay1.inputLines = listOf("1009", "1216", "898", "1333", "545", "1010", "789", "1122", "577", "123")
+
+        val result = adventDay1.solvePartOne()
+
         val expectedResult = "1007556"  // from 898 * 1122
         Assertions.assertThat(result).isEqualTo(expectedResult)
     }
 
     @Test
     override fun partTwoTest() {
-        // Arrange
-        val testInputTextLines = listOf("1009", "898", "1333", "545", "1010", "789", "1122", "577", "123")
-        // Act
-        val result = adventDay1.solvePartTwo(testInputTextLines)
-        // Assert
+        adventDay1.inputLines = listOf("1009", "1216", "898", "1333", "545", "1010", "789", "1122", "577", "123")
+
+        val result = adventDay1.solvePartTwo()
+
         val expectedResult = "282389570" // from 898 * 545 * 577
         Assertions.assertThat(result).isEqualTo(expectedResult)
     }

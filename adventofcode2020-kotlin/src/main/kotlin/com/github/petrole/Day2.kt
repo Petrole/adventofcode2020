@@ -24,25 +24,17 @@
 
 package com.github.petrole
 
-import com.github.petrole.util.getTextFromFile
 
 /**
  * Problem description @ [https://adventofcode.com/2020/day/2](https://adventofcode.com/2020/day/2)
  */
-class Day2 : AdventPuzzle {
+class Day2(var inputLines: List<String>) : AdventPuzzle {
 
     private val regexPattern = "(\\d*)-(\\d*) ([a-zA-Z]): ([a-zA-Z]*)".toRegex()
 
-    override fun loadPuzzleInput(fileName: String): List<String> {
-        return fileName
-            .getTextFromFile()
-            .split("\n")
-            .takeWhile { it.isNotBlank() }
-    }
-
-    override fun solvePartOne(inputTextLines: List<String>): String {
+    override fun solvePartOne(): String {
         var numberOfValidPasswords = 0
-        for (line in inputTextLines) {
+        for (line in inputLines) {
             val lineGroups = regexPattern.find(line)?.destructured
             if (lineGroups != null) {
                 val minPolicy = lineGroups.component1().toInt()
@@ -56,9 +48,9 @@ class Day2 : AdventPuzzle {
         return numberOfValidPasswords.toString()
     }
 
-    override fun solvePartTwo(inputTextLines: List<String>): String {
+    override fun solvePartTwo(): String {
         var numberOfValidPasswords = 0
-        for (line in inputTextLines) {
+        for (line in inputLines) {
             val lineGroups = regexPattern.find(line)?.destructured
             if (lineGroups != null) {
                 val minPolicy = lineGroups.component1().toInt()

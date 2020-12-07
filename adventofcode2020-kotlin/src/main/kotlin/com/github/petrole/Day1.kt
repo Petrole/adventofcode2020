@@ -24,23 +24,16 @@
 
 package com.github.petrole
 
-import com.github.petrole.util.getTextFromFile
 
 /**
  * Problem description @ [https://adventofcode.com/2020/day/1](https://adventofcode.com/2020/day/1)
  */
-class Day1 : AdventPuzzle {
+class Day1(var inputLines: List<String>) : AdventPuzzle {
 
-    override fun loadPuzzleInput(fileName: String): List<String> {
-        return fileName
-            .getTextFromFile()
-            .split("\n")
-            .takeWhile { it.isNotBlank() }
-    }
+    private val targetSum = 2020
 
-    override fun solvePartOne(inputTextLines: List<String>): String {
-        val expenseReport: List<Int> = inputTextLines.map { it.toInt() }
-        val targetSum = 2020
+    override fun solvePartOne(): String {
+        val expenseReport: List<Int> = inputLines.map { it.toInt() }
         for (i in expenseReport.indices) {
             for (j in (i + 1)..expenseReport.lastIndex) {
                 if (expenseReport[i] + expenseReport[j] == targetSum) {
@@ -51,13 +44,8 @@ class Day1 : AdventPuzzle {
         return "No solution found."
     }
 
-    override fun solvePartTwo(inputTextLines: List<String>): String {
-        val expenseReport: List<Int> = inputTextLines.map { it.toInt() }
-        val targetSum = 2020
-        // we have nice computers now,
-        // maybe not so in poorer places,
-        // but i dont care and im lazy,
-        // still, if we compute a+b+c and then a+b+d , a+b+e, ...,  we should cache the result of a+b and so on
+    override fun solvePartTwo(): String {
+        val expenseReport: List<Int> = inputLines.map { it.toInt() }
         for (i in expenseReport.indices) {
             for (j in (i + 1)..expenseReport.lastIndex) {
                 for (k in (j + 1)..expenseReport.lastIndex) {

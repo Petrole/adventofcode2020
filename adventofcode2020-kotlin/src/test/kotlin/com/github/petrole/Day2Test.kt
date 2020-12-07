@@ -34,22 +34,21 @@ class Day2Test : AdventPuzzleTest {
 
     @BeforeAll
     override fun setUp() {
-        adventDay2 = Day2()
+        adventDay2 = Day2(listOf())
     }
 
     @Test
     override fun partOneTest() {
-        // Arrange
-        val testInputTextLines = listOf(
+        adventDay2.inputLines = listOf(
             "3-4 j: jjjjjjjnq",
             "5-6 h: pkhzhh",
             "5-6 g: gggggm",
             "1-6 j: djjjjjj",
             "4-5 c: xvfcfkfz"
         )
-        // Act
-        val result = adventDay2.solvePartOne(testInputTextLines)
-        // Assert
+
+        val result = adventDay2.solvePartOne()
+
         val expectedResult = "2" // the 1st rule
         Assertions.assertThat(result).isEqualTo(expectedResult)
     }
@@ -57,7 +56,7 @@ class Day2Test : AdventPuzzleTest {
     @Test
     override fun partTwoTest() {
         // Arrange
-        val testInputTextLines = listOf(
+        adventDay2.inputLines = listOf(
             "3-4 j: jjjjjjjnq",
             "5-6 h: pkhzhh",
             "5-6 g: gggggm",
@@ -65,7 +64,7 @@ class Day2Test : AdventPuzzleTest {
             "4-5 c: xvfcfkfz"
         )
         // Act
-        val result = adventDay2.solvePartTwo(testInputTextLines)
+        val result = adventDay2.solvePartTwo()
         // Assert
         val expectedResult = "3" // the 2nd rule
         Assertions.assertThat(result).isEqualTo(expectedResult)
