@@ -24,6 +24,7 @@
 
 package com.github.petrole
 
+import com.google.common.truth.Truth.assertThat
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 
@@ -33,17 +34,50 @@ class Day3Test : AdventPuzzleTest {
 
     @BeforeAll
     override fun setUp() {
-        assert(true)
+        adventDay3 = Day3(listOf())
     }
 
     @Test
     override fun partOneTest() {
+        adventDay3.inputLines = listOf(
+            "..##.......",
+            "#...#...#..",
+            ".#....#..#.",
+            "..#.#...#.#",
+            ".#...##..#.",
+            "..#.##.....",
+            ".#.#.#....#",
+            ".#........#",
+            "#.##...#...",
+            "#...##....#",
+            ".#..#...#.#"
+        )
 
-        assert(true)
+        val result = adventDay3.solvePartOne()
+
+        val expectedResult = "7"
+        assertThat(result).isEqualTo(expectedResult)
     }
 
     @Test
     override fun partTwoTest() {
-        assert(true)
+        adventDay3.inputLines = listOf(
+            "..##.......",
+            "#...#...#..",
+            ".#....#..#.",
+            "..#.#...#.#",
+            ".#...##..#.",
+            "..#.##.....",
+            ".#.#.#....#",
+            ".#........#",
+            "#.##...#...",
+            "#...##....#",
+            ".#..#...#.#"
+        )
+
+        val result = adventDay3.solvePartTwo()
+
+        val expectedResult = "336" // 2 * 7 * 3 * 4 * 2
+        assertThat(result).isEqualTo(expectedResult)
     }
 }

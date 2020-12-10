@@ -24,33 +24,13 @@
 
 package com.github.petrole
 
-import kotlin.time.measureTimedValue
+class Day4(var inputLines: List<String>) : AdventPuzzle {
 
-/**
- *
- */
-interface AdventPuzzle {
-    /**
-     *
-     */
-    fun solvePartOne(): String
+    override fun solvePartOne(): String {
+        TODO("Not yet implemented")
+    }
 
-    /**
-     *
-     */
-    fun solvePartTwo(): String
-}
-
-/**
- *
- */
-fun AdventPuzzle.solvePartOneTimed() {
-    println("Part 1 result : ${measureTimedValue { this.solvePartOne() }}")
-}
-
-/**
- *
- */
-fun AdventPuzzle.solvePartTwoTimed() {
-    println("Part 2 result : ${measureTimedValue { this.solvePartTwo() }}\n")
+    override fun solvePartTwo(): String {
+        TODO("Not yet implemented")
+    }
 }

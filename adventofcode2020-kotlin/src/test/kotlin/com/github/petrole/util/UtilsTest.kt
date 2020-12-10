@@ -32,7 +32,7 @@ import org.junit.jupiter.api.TestInstance
 class UtilsTest {
 
     @Test
-    fun testLoadInputAsText(){
+    fun testLoadInputAsText() {
         // Arrange
         val testFileName = "test_file.txt"
         // Act
@@ -43,13 +43,13 @@ class UtilsTest {
     }
 
     @Test
-    fun testLoadInputAsLines(){
+    fun testLoadInputAsLines() {
         // Arrange
         val testFileName = "test_file.txt"
         // Act
         val result = LoadInputAsLines[testFileName]
         // Assert
-        val expectedResult = listOf("YOLO","420")
+        val expectedResult = listOf("YOLO", "420")
         assertThat(result).isEqualTo(expectedResult)
     }
 }

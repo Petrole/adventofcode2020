@@ -34,9 +34,9 @@ class Day1(var inputLines: List<String>) : AdventPuzzle {
     override fun solvePartOne(): String {
         val report = inputLines.map { it.toInt() }.toSet()
         return try {
-            val a = report.first {  2020 - it in report}
-            (a*(2020-a)).toString()
-        } catch (e:Exception){
+            val a = report.first { 2020 - it in report }
+            (a * (2020 - a)).toString()
+        } catch (e: Exception) {
             System.err.println("Exception : ${e.message}")
             "No solution found."
         }
@@ -44,7 +44,7 @@ class Day1(var inputLines: List<String>) : AdventPuzzle {
 
     /** See 3SUM @ [https://en.wikipedia.org/wiki/3SUM](https://en.wikipedia.org/wiki/3SUM) */
     override fun solvePartTwo(): String {
-        val report= inputLines.map { it.toInt() }.sorted().toIntArray()
+        val report = inputLines.map { it.toInt() }.sorted().toIntArray()
         val n = report.size
         report.forEachIndexed { index, _ ->
             var start = index + 1
@@ -52,9 +52,10 @@ class Day1(var inputLines: List<String>) : AdventPuzzle {
             while (start < end) {
                 val sum = report[start] + report[end] + report[index]
                 when {
-                    sum == targetSum -> { return (report[start] * report[end] * report[index]).toString() }
-                    sum > targetSum -> { end-- }
-                    else -> { start++ }
+                    sum == targetSum -> return (report[start] * report[end] * report[index]).toString()
+                    sum > targetSum  -> end--
+                    else             -> start++
+
                 }
             }
         }

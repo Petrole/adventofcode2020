@@ -35,27 +35,27 @@ import org.reflections.Reflections
  */
 private val reflections = Reflections("")
 
-private fun findAllAdventPuzzleImplInterfaces(): MutableSet<Class<out AdventPuzzle>> {
+private fun getAllAdventPuzzleImplInterfaces(): MutableSet<Class<out AdventPuzzle>> {
     return reflections.getSubTypesOf(AdventPuzzle::class.java)
-        ?: throw NullPointerException("Couldn't find day classes - please check directory .")
+        ?: throw NoSuchElementException("Couldn't find day classes - please check directory .")
 }
 
-fun inputDay(day: Int): String {
+private fun inputDay(day: Int): String {
     return "input_day_${day}.txt"
 }
 
-fun Class<out AdventPuzzle>.getNewInstanceOf(day: Int): AdventPuzzle {
+private fun Class<out AdventPuzzle>.getNewInstanceOf(day: Int): AdventPuzzle {
     return this.constructors[0].newInstance(LoadInputAsLines[inputDay(day)]) as AdventPuzzle
 }
 
-fun findSpecificDay(day: Int): AdventPuzzle {
-    return findAllAdventPuzzleImplInterfaces()
+private fun getSpecificDay(day: Int): AdventPuzzle {
+    return getAllAdventPuzzleImplInterfaces()
         .first { it.simpleName.contains(day.toString()) }
         .getNewInstanceOf(day)
 }
 
 fun solveAllDays() {
-    findAllAdventPuzzleImplInterfaces()
+    getAllAdventPuzzleImplInterfaces()
         .forEachIndexed { dayIndex, clazz ->
             clazz.getNewInstanceOf(dayIndex + 1)
                 .run {
@@ -67,7 +67,7 @@ fun solveAllDays() {
 }
 
 fun solveDay(day: Int) {
-    findSpecificDay(day).run {
+    getSpecificDay(day).run {
         println(this::class.simpleName)
         solvePartOneTimed()
         solvePartTwoTimed()
@@ -75,19 +75,19 @@ fun solveDay(day: Int) {
 }
 
 fun solveDayPart1(day: Int) {
-    findSpecificDay(day).run {
+    getSpecificDay(day).run {
         println(this::class.simpleName)
         solvePartOneTimed()
     }
 }
 
 fun solveDayPart2(day: Int) {
-    findSpecificDay(day).run {
+    getSpecificDay(day).run {
         println(this::class.simpleName)
         solvePartTwoTimed()
     }
 }
 
 fun main() {
-    solveDayPart1(3)
+    solveDay(3)
 }
