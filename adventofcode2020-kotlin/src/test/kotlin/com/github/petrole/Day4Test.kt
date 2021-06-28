@@ -24,4 +24,44 @@
 
 package com.github.petrole
 
-class Day4Test
+import com.google.common.truth.Truth.assertThat
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Test
+
+class Day4Test : AdventPuzzleTest {
+
+    private lateinit var adventDay4: Day4
+
+    @BeforeAll
+    override fun setUp() {
+        adventDay4 = Day4(listOf())
+    }
+
+    @Test
+    override fun partOneTest() {
+        adventDay4.inputLines = listOf(
+            "ecl:gry pid:860033327 eyr:2020 hcl:#fffffd",
+            "byr:1937 iyr:2017 cid:147 hgt:183cm",
+            "",
+            "iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884",
+            "hcl:#cfa07d byr:1929",
+            "",
+            "hcl:#ae17e1 iyr:2013",
+            "eyr:2024",
+            "ecl:brn pid:760753108 byr:1931",
+            "hgt:179cm",
+            "",
+            "hcl:#cfa07d eyr:2025 pid:166559648",
+            "iyr:2011 ecl:brn hgt:59in"
+        )
+
+        val result: String = adventDay4.solvePartOne()
+        assertThat(result).isEqualTo("2")
+    }
+
+    @Test
+    override fun partTwoTest() {
+        val result: String = adventDay4.solvePartTwo()
+        assertThat(result).isEqualTo("2")
+    }
+}

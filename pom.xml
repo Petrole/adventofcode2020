@@ -40,10 +40,10 @@
 
     <properties>
         <!-- Languages -->
-        <java.version>11</java.version>
-        <jvmTarget.version>11</jvmTarget.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>16</java.version>
+        <jvmTarget.version>16</jvmTarget.version>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
 
         <!-- Encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
