@@ -23,17 +23,15 @@
  */
 @file:Suppress("unused")
 
-package com.github.petrole.util
+package com.github.petrole
 
-import com.github.petrole.AdventPuzzle
-import com.github.petrole.solvePartOneTimed
-import com.github.petrole.solvePartTwoTimed
+import com.github.petrole.util.LoadInputAsLines
 import org.reflections.Reflections
 
 /**
  *
  */
-object Solver {
+object AdventPuzzleSolver {
     /**
      * Empty String while waiting for lib fix.
      * See @ [https://github.com/ronmamo/reflections/issues/273](https://github.com/ronmamo/reflections/issues/273)
@@ -106,3 +104,6 @@ object Solver {
     }
 
 }
+
+
+

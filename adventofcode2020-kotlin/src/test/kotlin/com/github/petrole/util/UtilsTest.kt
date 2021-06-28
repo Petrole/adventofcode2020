@@ -38,7 +38,7 @@ class UtilsTest {
         // Act
         val result = LoadInputAsText[testFileName]
         // Assert
-        val expectedResult = "YOLO\r\n" + "420\r\n"
+        val expectedResult = "YOLO\n" + "420\n"
         assertThat(result).isEqualTo(expectedResult)
     }
 

@@ -24,11 +24,7 @@
 
 package com.github.petrole
 
-import com.github.petrole.util.Solver
 
-/**
- *
- */
 fun main() {
-    Solver.solveAllDays()
+    AdventPuzzleSolver.solveAllDays()
 }

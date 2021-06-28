@@ -47,18 +47,13 @@ interface AdventPuzzle {
      *
      */
     fun solvePartTwo(): String
-}
 
-/**
- *
- */
-fun AdventPuzzle.solvePartOneTimed() {
-    println("Part 1 result : ${measureTimedValue { this.solvePartOne() }}")
-}
 
-/**
- *
- */
-fun AdventPuzzle.solvePartTwoTimed() {
-    println("Part 2 result : ${measureTimedValue { this.solvePartTwo() }}\n")
+    fun solvePartOneTimed() {
+        println("Part 1 result : ${measureTimedValue { this.solvePartOne() }}")
+    }
+
+    fun solvePartTwoTimed() {
+        println("Part 2 result : ${measureTimedValue { this.solvePartTwo() }}\n")
+    }
 }
