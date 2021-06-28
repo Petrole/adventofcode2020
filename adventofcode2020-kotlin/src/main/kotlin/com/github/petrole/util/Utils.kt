@@ -37,6 +37,9 @@ fun String.getMatchingResourceAsStream(): InputStream {
         ?: throw IOException("Cannot find file : please check the path, file status or classpath settings.")
 }
 
+/**
+ *
+ */
 object LoadInputAsLines {
     /**
      * Retrieves all lines of a file of the given name as a list. Use UTF-8.
@@ -46,6 +49,9 @@ object LoadInputAsLines {
     }
 }
 
+/**
+ *
+ */
 object LoadInputAsText {
     /**
      * Retrieves all the content of a file as a string. Use UTF-8.
@@ -54,4 +60,3 @@ object LoadInputAsText {
         return name.getMatchingResourceAsStream().bufferedReader(Charsets.UTF_8).use { it.readText() }
     }
 }
-

@@ -1,0 +1,15 @@
+##############################################
+# https://www.git-scm.com/docs/gitattributes #
+##############################################
+
+# Automatically normalize text file line endings
+* text=auto
+
+# Align with Prettier linebreak-style rule
+# https://github.com/HubSpot/prettier-maven-plugin#configuration
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.kt text eol=lf
+*.xml text eol=lf
+*.sh text eol=lf
+*.txt text eol=lf

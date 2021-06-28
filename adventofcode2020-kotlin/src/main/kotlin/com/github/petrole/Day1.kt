@@ -24,21 +24,32 @@
 
 package com.github.petrole
 
+
 /**
  * Problem description @ [https://adventofcode.com/2020/day/1](https://adventofcode.com/2020/day/1)
  */
-class Day1(var inputLines: List<String>) : AdventPuzzle {
+class Day1(
+    /**
+     * Input lines coming from the puzzle entry.
+     */
+    var inputLines: List<String>
+) : AdventPuzzle {
 
-    private val targetSum = 2020
+    companion object {
+        /**
+         * Target sum for the puzzle.
+         */
+        const val TARGET_SUM: Int = 2020
+    }
 
     override fun solvePartOne(): String {
         val report = inputLines.map { it.toInt() }.toSet()
         return try {
-            val a = report.first { 2020 - it in report }
-            (a * (2020 - a)).toString()
-        } catch (e: Exception) {
+            val a = report.first { TARGET_SUM - it in report }
+            (a * (TARGET_SUM - a)).toString()
+        } catch (e: NoSuchElementException) {
             System.err.println("Exception : ${e.message}")
-            "No solution found."
+            AdventPuzzle.NO_SOLUTION_FOUND
         }
     }
 
@@ -52,13 +63,13 @@ class Day1(var inputLines: List<String>) : AdventPuzzle {
             while (start < end) {
                 val sum = report[start] + report[end] + report[index]
                 when {
-                    sum == targetSum -> return (report[start] * report[end] * report[index]).toString()
-                    sum > targetSum  -> end--
-                    else             -> start++
+                    sum == TARGET_SUM -> return (report[start] * report[end] * report[index]).toString()
+                    sum > TARGET_SUM  -> end--
+                    else              -> start++
 
                 }
             }
         }
-        return "No solution found."
+        return AdventPuzzle.NO_SOLUTION_FOUND
     }
 }

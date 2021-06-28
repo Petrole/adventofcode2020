@@ -29,7 +29,12 @@ package com.github.petrole
  *
  * I dedicate this puzzle to Kanye West.
  */
-class Day2(var inputLines: List<String>) : AdventPuzzle {
+class Day2(
+    /**
+     *
+     */
+    var inputLines: List<String>
+) : AdventPuzzle {
 
     private val regexPattern = "(\\d*)-(\\d*) ([a-zA-Z]): ([a-zA-Z]*)".toRegex()
 
@@ -55,4 +60,3 @@ class Day2(var inputLines: List<String>) : AdventPuzzle {
         }.toString()
     }
 }
-

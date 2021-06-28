@@ -30,6 +30,14 @@ import kotlin.time.measureTimedValue
  *
  */
 interface AdventPuzzle {
+
+    companion object {
+        /**
+         * String to use when appropriate and when no solution is found.
+         */
+        const val NO_SOLUTION_FOUND: String = "No solution found."
+    }
+
     /**
      *
      */

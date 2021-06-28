@@ -24,7 +24,15 @@
 
 package com.github.petrole
 
-class Day4(var inputLines: List<String>) : AdventPuzzle {
+/**
+ *
+ */
+class Day4(
+    /**
+     *
+     */
+    var inputLines: List<String>
+) : AdventPuzzle {
 
     override fun solvePartOne(): String {
         TODO("Not yet implemented")
